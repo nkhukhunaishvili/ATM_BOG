@@ -5,4 +5,4 @@ https://docs.aws.amazon.com/sagemaker/latest/dg/deepar.html
 
 I have tried to understand the model of AWS. They used LSTM for forecasting. The predictors included in the model are: i) lagged valus of times series, ii) derived variables like day of the week, week of the year, etc., plus iii) item id. As I understand, they boil everything together - do not have separate time series for each item. They have a single time series with all the items.
 
-I tried to replicate their approach. The paper behind their model is apploaded in this repository.
+I tried to "replicate" their approach. The paper behind their model is apploaded in this repository.

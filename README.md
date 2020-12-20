@@ -7,4 +7,4 @@ I have tried to understand the model of AWS. They used LSTM for forecasting. The
 
 I tried to "replicate" their approach. In my model (LSTM) target variable - withdrawal amount y(t) is predicted with lagged valus of withdrawal (y(t-1), y(t-7)) and some derived features: day of he week, day of the month and month of the year. These features are one-hot encoded before inclusion. Cashpoint ID is not included in the model. They can be grouped in some categoreis (maybe according to the target variable) and fed into the model as a dummy. 
 
-I have built LSTM for the first time. So the model is very far from perfect. But this approach by AWS is worth invetsigating, I think.
+I have built LSTM for the first time. So the model is very far from perfect. But this approach by AWS is worth invetsigating.

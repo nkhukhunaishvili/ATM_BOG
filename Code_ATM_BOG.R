@@ -50,7 +50,7 @@ df %>% filter(CASHPOINTID=='17' & year(DATE)=='2019') %>%
 ##Knowing if there is any weekly, monthly or annul pattern
 #will help in determinig lags to include in the model.
 #Looking at monthly series, we see that some shapes of the same length
-#(although not very similar) are repeated? - weekly pattern.
+#(although not very similar) are repeated. - weekly pattern.
 a<-df %>% filter(CASHPOINTID==6 & year(DATE)=='2017' & month(DATE)=='7') %>% select(AMT_SCALED_A, DATE)
 a %>% ggplot(aes(as.Date(DATE), AMT_SCALED_A))+ 
   geom_line() +
@@ -139,8 +139,7 @@ batch_size<-126
 timesteps<-1
 data_dim<-dim(x_train)[3]
 
-#On the first run an error will pop up, which should be ignored
-#if the machine has only cpu.
+
 model <- keras_model_sequential() 
 model %>% layer_lstm(units=40, 
                      batch_input_shape = c(batch_size, timesteps, data_dim),

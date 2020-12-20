@@ -9,4 +9,4 @@ I tried to "replicate" their approach. In my model (LSTM) target variable - with
 
 The graphs uploaded show predictions for one of the atms (cashpointid=14) when total withdrawal amount of the previous day is know and when it is not (prediction is made 1 month ahead). Comparison of the two gives a hit that previous valus of the withdrawal is very important. All other variables were available for both prediction scenarios. However, spikes are quite vell captured by the derived featurs. For January 2020 predictions, predictions for different atms vary only initially - due to y(t-1), for the end of the month predicted amount (AMT_SCALED) is the same for every atm.
 
-I have built LSTM for the first time. So the model is very far from perfect. But this approach by AWS is worth invetsigating. 
+I have built LSTM for the first time. So the model is very far from perfect. But this approach by AWS is worth invetsigating, I think.

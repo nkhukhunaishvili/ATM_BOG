@@ -13,7 +13,8 @@ library(fastDummies)
 df<-read.csv("train.csv")
 
 
-
+#Preprocessing
+#=========================================================================================
 #Split OPERATIONDATE into DATE and TIME variables.
 #Aggregate the amount for atm and date combination.
 #Plus add variables which show day of the week, day of the month and 
@@ -38,6 +39,7 @@ df$EASTER<-df$DATE %in% easter %>% if_else(1,0)
 
 
 #EDA
+#=====================================================================
 df %>% filter(CASHPOINTID=='17' & year(DATE)=='2019') %>%
   ggplot(aes(WDAY, AMT_SCALED_A)) +
   geom_histogram(stat='identity', binwidth = 1)
@@ -69,6 +71,7 @@ a %>% ggplot(aes(as.Date(DATE), AMT_SCALED_A))+
 
 
 
+#Preprocessing + split train/test sets
 ############################################################
 #The model will predict y(t) with the help of explanatory 
 #variables - y(t-1) and derived features. It would be better
@@ -116,9 +119,8 @@ x_val <- array(as.matrix(x_test),
 y_val <- as.matrix(y_test, nrow = nrow(y_test), ncol = ncol(y_test))
 
 
-
+#Model training
 #=========================================================================================
-####Model training
 #Some of the recommended hyperparameters are used here (by AWS).
 #"num_cells": "40",+
 #"epochs": "20",+
@@ -223,6 +225,8 @@ summary(model_1)
 #set_weights(model_new, weights)
 
 
+#Prediction on original test data
+#===========================================================================
 #Make the prediction for the test set using the whole test set
 predictions<-model_2 %>% predict(x_val, batch_size=27893)
 
@@ -254,6 +258,9 @@ b %>% filter(CASHPOINTID=='14' & year(DATE)=='2019') %>%
 #total value withdrawn from the atm the previous day.
 
 
+
+#Prediction 1 month ahead
+#===========================================================================
 #To make test set similar to the problem, will leave only November 30
 #values of atm withdrawal and delete everything else.
 
@@ -335,9 +342,8 @@ c %>% filter(CASHPOINTID=='14' & year(DATE)=='2019') %>%
 
 
 
-
+#Out of sample predictions - January 2020
 #=======================================================================================
-#Make out of sample predictions
 #Create dataset with CASHPOINTID and DATE
 ATM<-0:1342
 D<-seq(as.Date("2020-01-01"), as.Date("2020-01-31"), by="days")

@@ -142,7 +142,9 @@ batch_size<-126
 timesteps<-1
 data_dim<-dim(x_train)[3]
 
-
+#Instead of LSTM one could consider feedforeward neural network (layer_dense with input_shape = c(52)). 
+#Based on the test set used in this problem, feedforeward neural network has similar accuracy (RMSE),
+#as LSTM.
 model <- keras_model_sequential() 
 model %>% layer_lstm(units=40, 
                      batch_input_shape = c(batch_size, timesteps, data_dim),

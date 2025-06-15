@@ -1,4 +1,4 @@
-# ATM_BOG
+# ATM_BOG - Updated
 
 The motivation for my code is an AWS model described here:
 https://docs.aws.amazon.com/sagemaker/latest/dg/deepar.html
